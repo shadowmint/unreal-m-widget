@@ -1,0 +1,26 @@
+{
+  "name": "unreal-m-widget",
+  "version": "0.0.1",
+  "description": "UMG widget tools",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadowmint/unreal-m-widget.git"
+  },
+  "files": [
+    "index.js",
+    "scripts",
+    "src"
+  ],
+  "author": "douglas.linder@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shadowmint/unreal-m-widget/issues"
+  },
+  "homepage": "https://github.com/shadowmint/unreal-m-widget",
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "dependencies": {
+  }
+}
