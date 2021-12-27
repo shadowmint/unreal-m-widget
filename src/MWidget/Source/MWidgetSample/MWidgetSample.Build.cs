@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class MWidget : ModuleRules
+public class MWidgetSample : ModuleRules
 {
-	public MWidget(ReadOnlyTargetRules Target) : base(Target)
+	public MWidgetSample(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
@@ -25,8 +25,7 @@ public class MWidget : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core",
-				"UMG"
+				"Core", "MWidget",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -39,6 +38,8 @@ public class MWidget : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"MWidget",
+				"UMG"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
