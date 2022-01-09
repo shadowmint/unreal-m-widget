@@ -23,6 +23,8 @@ public:
 
 	void SetValue(float NextValue);
 
+	virtual void CopyTo(UMWidgetField* OtherField) override;
+	
 protected:
 	virtual void OnRedraw() override;
 };

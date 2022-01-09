@@ -6,9 +6,9 @@
 #include "MUserWidget.h"
 #include "Components/TextBlock.h"
 
-UMTextBlock* UMTextBlock::From(FName Name, UMUserWidget* Parent, UTextBlock** Widget)
+UMTextBlock* UMTextBlock::From(UMUserWidget* Parent, UTextBlock** Widget)
 {
-	const auto Instance = NewObject<UMTextBlock>(Parent, Name);
+	const auto Instance = NewObject<UMTextBlock>();
 	Instance->Widget = Widget;
 	Parent->RegisterWidget(Instance->Initialize(reinterpret_cast<UWidget**>(Widget)));
 	return Instance;
@@ -17,11 +17,20 @@ UMTextBlock* UMTextBlock::From(FName Name, UMUserWidget* Parent, UTextBlock** Wi
 void UMTextBlock::SetText(FText Text)
 {
 	Value = Text;
+	RedrawRequired();
 }
 
 void UMTextBlock::SetText(FString Text)
 {
 	Value = FText::FromString(Text);
+	RedrawRequired();
+}
+
+void UMTextBlock::CopyTo(UMWidgetField* OtherField)
+{
+	auto const Other = Cast<UMTextBlock>(OtherField);
+	if (!Other) return;
+	Other->SetText(Value);
 }
 
 void UMTextBlock::OnRedraw()

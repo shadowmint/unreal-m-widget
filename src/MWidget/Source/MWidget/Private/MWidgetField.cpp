@@ -16,6 +16,11 @@ void UMWidgetField::OnRedraw()
 {
 }
 
+void UMWidgetField::CopyTo(UMWidgetField* OtherField)
+{
+	UE_LOG(LogTemp, Warning, TEXT("UMWidgetField::CopyTo not implemented for this widget field"));
+}
+
 UMWidgetField* UMWidgetField::Initialize(UWidget** RawComponent)
 {
 	IsMaterialized = false;

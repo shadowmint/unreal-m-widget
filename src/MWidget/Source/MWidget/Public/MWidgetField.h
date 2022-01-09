@@ -45,4 +45,7 @@ public:
 	TWeakObjectPtr<UMUserWidget> Parent;
 
 	void Redraw();
+
+	/** Implement this to copy to another field of the same type */
+	virtual void CopyTo(UMWidgetField *OtherField);
 };

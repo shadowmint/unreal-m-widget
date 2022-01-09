@@ -5,7 +5,7 @@
 
 UMProgressBar* UMProgressBar::From(FName Name, UMUserWidget* Parent, UProgressBar** Widget)
 {
-	const auto Instance = NewObject<UMProgressBar>(Parent, Name);
+	const auto Instance = NewObject<UMProgressBar>();
 	Instance->Widget = Widget;
 	Parent->RegisterWidget(Instance->Initialize(reinterpret_cast<UWidget**>(Widget)));
 	return Instance;
@@ -25,4 +25,11 @@ inline void UMProgressBar::SetValue(float NextValue)
 {
 	Value = NextValue;
 	RedrawRequired();
+}
+
+void UMProgressBar::CopyTo(UMWidgetField* OtherField)
+{
+	auto const Other = Cast<UMProgressBar>(OtherField);
+	if (!Other) return;
+	Other->SetValue(Value);
 }

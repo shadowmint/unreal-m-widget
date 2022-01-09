@@ -12,17 +12,28 @@ class UImage;
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class MWIDGET_API UMImage : public UMWidgetField
 {
 	GENERATED_BODY()
 
 	/** The internal data object */
 	UImage** Widget;
+	
+	FColor BrushTint;
+
+	UPROPERTY()
+	UTexture2D *BrushTexture;
 
 public:
-	static UMImage* From(FName Name, UMUserWidget* Parent, UImage** Widget);
-		
+	static UMImage* From(UMUserWidget* Parent, UImage** Widget);
+
+	void SetBrushTint(const FColor& InBrushTint);
+
+	void SetBrushTexture(UTexture2D *InBrushTexture);
+
+	virtual void CopyTo(UMWidgetField* OtherField) override;
+	
 protected:
 	virtual void OnRedraw() override;
 };

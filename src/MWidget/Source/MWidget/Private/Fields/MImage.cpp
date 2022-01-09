@@ -4,13 +4,40 @@
 #include "Fields/MImage.h"
 #include "Components/Widget.h"
 #include "MUserWidget.h"
+#include "Components/Image.h"
 
-UMImage* UMImage::From(FName Name, UMUserWidget* Parent, UImage** Widget)
+UMImage* UMImage::From(UMUserWidget* Parent, UImage** Widget)
 {
-	const auto Instance = NewObject<UMImage>(Parent, Name);
+	const auto Instance = NewObject<UMImage>();
 	Instance->Widget = Widget;
 	Parent->RegisterWidget(Instance->Initialize(reinterpret_cast<UWidget**>(Widget)));
+
+	// Default to white so the image doesn't vanish
+	Instance->BrushTint = FColor(255, 255, 255, 255);
+	
 	return Instance;
+}
+
+void UMImage::SetBrushTint(const FColor& Color)
+{
+	BrushTint = Color;
+	RedrawRequired();
+}
+
+void UMImage::SetBrushTexture(UTexture2D* InBrushTexture)
+{
+	BrushTexture = InBrushTexture;
+	RedrawRequired();
+}
+
+void UMImage::CopyTo(UMWidgetField* OtherField)
+{
+	auto const Other = Cast<UMImage>(OtherField);
+	if (!Other) return;
+	Other->SetBrushTexture(BrushTexture);
+	Other->SetBrushTint(BrushTint);
+	UE_LOG(LogTemp, Display, TEXT("Copy texture!"));
+	Other->Redraw();
 }
 
 void UMImage::OnRedraw()
@@ -18,6 +45,8 @@ void UMImage::OnRedraw()
 	UMWidgetField::OnRedraw();
 	if (*Widget)
 	{
+		(*Widget)->SetBrushFromTexture(BrushTexture);
+		(*Widget)->SetBrushTintColor(FSlateColor(BrushTint));
 		Dirty = false;
 	}
 }

@@ -10,7 +10,7 @@ void UMWidgetSampleItem::PostInitProperties()
 	Super::PostInitProperties();
 
 	// Setup widgets
-	InfoRef = UMTextBlock::From(TEXT("InfoRef"), this, &Info);
+	InfoRef = UMTextBlock::From(this, &Info);
 }
 
 void UMWidgetSampleItem::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)

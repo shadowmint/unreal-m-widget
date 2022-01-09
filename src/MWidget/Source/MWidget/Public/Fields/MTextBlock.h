@@ -21,11 +21,13 @@ class MWIDGET_API UMTextBlock : public UMWidgetField
 	FText Value;
 	
 public:
-	static UMTextBlock* From(FName Name, UMUserWidget* Parent, UTextBlock** Widget);
+	static UMTextBlock* From(UMUserWidget* Parent, UTextBlock** Widget);
 
 	void SetText(FText Text);
 
 	void SetText(FString Text);
+
+	virtual void CopyTo(UMWidgetField* OtherField) override;
 	
 protected:
 	virtual void OnRedraw() override;

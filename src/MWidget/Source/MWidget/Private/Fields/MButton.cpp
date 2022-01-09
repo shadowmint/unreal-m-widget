@@ -5,7 +5,7 @@
 
 UMButton* UMButton::From(FName Name, UMUserWidget* Parent, UButton** Widget)
 {
-	const auto Instance = NewObject<UMButton>(Parent, Name);
+	const auto Instance = NewObject<UMButton>();
 	Instance->Widget = Widget;
 	Parent->RegisterWidget(Instance->Initialize(reinterpret_cast<UWidget**>(Widget)));
 	return Instance;
