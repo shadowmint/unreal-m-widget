@@ -17,7 +17,7 @@ class  UMWidgetSampleItem : public UMUserWidget
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="MWidgetSample|MWidgetSampleItem", meta=(BindWidgetl))
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="MWidgetSample|MWidgetSampleItem", meta=(BindWidget))
 	UTextBlock* Info = nullptr;
 
 	UPROPERTY()

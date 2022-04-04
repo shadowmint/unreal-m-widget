@@ -19,6 +19,8 @@ class MWIDGET_API UMTextBlock : public UMWidgetField
 	UTextBlock** Widget;
 
 	FText Value;
+
+	FLinearColor Color;
 	
 public:
 	static UMTextBlock* From(UMUserWidget* Parent, UTextBlock** Widget);
@@ -27,8 +29,10 @@ public:
 
 	void SetText(FString Text);
 
-	virtual void CopyTo(UMWidgetField* OtherField) override;
+	void SetColor(const FLinearColor& InColor);
 	
+	virtual void CopyTo(UMWidgetField* OtherField) override;
+
 protected:
 	virtual void OnRedraw() override;
 };

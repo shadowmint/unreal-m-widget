@@ -22,7 +22,7 @@
 		},
 		{
 			"Name": "MWidgetSample",
-			"Type": "Runtime",
+			"Type": "Editor",
 			"LoadingPhase": "Default"
 		}
 	]

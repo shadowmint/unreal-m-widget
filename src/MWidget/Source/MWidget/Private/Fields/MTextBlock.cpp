@@ -26,11 +26,18 @@ void UMTextBlock::SetText(FString Text)
 	RedrawRequired();
 }
 
+void UMTextBlock::SetColor(const FLinearColor& InColor)
+{
+	Color = InColor;
+	RedrawRequired();
+}
+
 void UMTextBlock::CopyTo(UMWidgetField* OtherField)
 {
 	auto const Other = Cast<UMTextBlock>(OtherField);
 	if (!Other) return;
 	Other->SetText(Value);
+	Other->SetColor(Color);
 }
 
 void UMTextBlock::OnRedraw()
@@ -39,6 +46,7 @@ void UMTextBlock::OnRedraw()
 	if (*Widget)
 	{
 		(*Widget)->SetText(Value);
+		(*Widget)->SetColorAndOpacity(FSlateColor(Color));
 		Dirty = false;
 	}
 }
