@@ -3,7 +3,7 @@
 
 #include "Fields/MProgressBar.h"
 
-UMProgressBar* UMProgressBar::From(FName Name, UMUserWidget* Parent, UProgressBar** Widget)
+UMProgressBar* UMProgressBar::From(UMUserWidget* Parent, UProgressBar** Widget)
 {
 	const auto Instance = NewObject<UMProgressBar>();
 	Instance->Widget = Widget;
@@ -21,8 +21,9 @@ void UMProgressBar::OnRedraw()
 	}
 }
 
-inline void UMProgressBar::SetValue(float NextValue)
+void UMProgressBar::SetValue(float NextValue)
 {
+	if (Value == NextValue) return;
 	Value = NextValue;
 	RedrawRequired();
 }

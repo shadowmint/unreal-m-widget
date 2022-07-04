@@ -3,7 +3,7 @@
 
 #include "Fields/MButton.h"
 
-UMButton* UMButton::From(FName Name, UMUserWidget* Parent, UButton** Widget)
+UMButton* UMButton::From(UMUserWidget* Parent, UButton** Widget)
 {
 	const auto Instance = NewObject<UMButton>();
 	Instance->Widget = Widget;

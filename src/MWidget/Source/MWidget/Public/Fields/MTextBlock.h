@@ -20,7 +20,7 @@ class MWIDGET_API UMTextBlock : public UMWidgetField
 
 	FText Value;
 
-	FLinearColor Color;
+	TOptional<FLinearColor> Color;
 	
 public:
 	static UMTextBlock* From(UMUserWidget* Parent, UTextBlock** Widget);

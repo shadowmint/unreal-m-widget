@@ -19,7 +19,7 @@ class MWIDGET_API UMProgressBar : public UMWidgetField
 	float Value;
 
 public:
-	static UMProgressBar* From(FName Name, UMUserWidget* Parent, UProgressBar** Widget);
+	static UMProgressBar* From(UMUserWidget* Parent, UProgressBar** Widget);
 
 	void SetValue(float NextValue);
 

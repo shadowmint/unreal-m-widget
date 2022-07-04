@@ -17,7 +17,7 @@ class MWIDGET_API UMButton : public UMWidgetField
 	UButton** Widget;
 
 public:
-	static UMButton* From(FName Name, UMUserWidget* Parent, UButton** Widget);
+	static UMButton* From(UMUserWidget* Parent, UButton** Widget);
 
 	FOnButtonClickedEvent OnClicked;
 	FOnButtonPressedEvent OnPressed;

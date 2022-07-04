@@ -42,6 +42,5 @@ void UMUserWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 	if (!Dirty) return;
-	auto Offset = 0;
 	Redraw();
 }

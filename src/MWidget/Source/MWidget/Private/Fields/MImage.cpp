@@ -20,12 +20,14 @@ UMImage* UMImage::From(UMUserWidget* Parent, UImage** Widget)
 
 void UMImage::SetBrushTint(const FColor& Color)
 {
+	if (BrushTint == Color) return; 
 	BrushTint = Color;
 	RedrawRequired();
 }
 
 void UMImage::SetBrushTexture(UTexture2D* InBrushTexture)
 {
+	if (BrushTexture == InBrushTexture) return; 
 	BrushTexture = InBrushTexture;
 	RedrawRequired();
 }

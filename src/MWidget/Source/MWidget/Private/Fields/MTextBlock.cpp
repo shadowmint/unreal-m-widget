@@ -16,18 +16,21 @@ UMTextBlock* UMTextBlock::From(UMUserWidget* Parent, UTextBlock** Widget)
 
 void UMTextBlock::SetText(FText Text)
 {
+	if (Value.EqualTo(Text)) return;
 	Value = Text;
 	RedrawRequired();
 }
 
 void UMTextBlock::SetText(FString Text)
 {
+	if (Value.EqualTo(FText::FromString(Text))) return;
 	Value = FText::FromString(Text);
 	RedrawRequired();
 }
 
 void UMTextBlock::SetColor(const FLinearColor& InColor)
 {
+	if (Color == InColor) return;
 	Color = InColor;
 	RedrawRequired();
 }
@@ -37,7 +40,10 @@ void UMTextBlock::CopyTo(UMWidgetField* OtherField)
 	auto const Other = Cast<UMTextBlock>(OtherField);
 	if (!Other) return;
 	Other->SetText(Value);
-	Other->SetColor(Color);
+	if (Color)
+	{
+		Other->SetColor(*Color);	
+	}
 }
 
 void UMTextBlock::OnRedraw()
@@ -46,7 +52,10 @@ void UMTextBlock::OnRedraw()
 	if (*Widget)
 	{
 		(*Widget)->SetText(Value);
-		(*Widget)->SetColorAndOpacity(FSlateColor(Color));
+		if (Color)
+		{
+			(*Widget)->SetColorAndOpacity(FSlateColor(*Color));	
+		}
 		Dirty = false;
 	}
 }
